@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import Blog from "../Blog/Blog";
 import PropTypes from "prop-types";
 
-const Blogs = ({ handleAddToBookmark }) => {
+const Blogs = ({ handleAddToBookmark, handleMarkAsRead }) => {
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {
     fetch("blog.json")
@@ -18,14 +18,15 @@ const Blogs = ({ handleAddToBookmark }) => {
           key={blog.id}
           blog={blog}
           handleAddToBookmark={handleAddToBookmark}
-          //   handleMarkAsRead={handleMarkAsRead}
+          handleMarkAsRead={handleMarkAsRead}
         ></Blog>
       ))}
     </div>
   );
 };
 Blogs.prototypes = {
-  handleAddToBookmark: PropTypes.function,
+  handleAddToBookmark: PropTypes.func,
+  handleMarkAsRead: PropTypes.func,
 };
 
 export default Blogs;
